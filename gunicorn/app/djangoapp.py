@@ -85,6 +85,7 @@ class DjangoApplication(Application):
                 for part in parts[1:]: 
                     settings_mod = getattr(settings_mod, part)
                 setup_environ(settings_mod)
+                sys.path.insert(0, os.path.join(path, "apps"))
         except ImportError:
             return self.no_settings(settings_modname, import_error=True)
 
